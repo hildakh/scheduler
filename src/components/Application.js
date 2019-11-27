@@ -20,6 +20,52 @@ const days = [
   }
 ];
 
+const appointments = [
+  {
+    id: 1,
+    time: "12pm"
+  },
+  
+  {
+    id: 2,
+    time: "1pm",
+    interview: {
+      student: "Lydia Miller-Jones",
+      interviewer: {
+        id: 1,
+        name: "Sylvia Palmer",
+        avatar: "https://i.imgur.com/LpaY82x.png"
+      }
+    }
+  },
+
+  {
+    id: 3,
+    time: "3pm",
+    interview:{
+      student: "Hilda",
+      interviewer: {
+        id: 5,
+        name: "Sven Jones",
+        avatar: "https://i.imgur.com/twYrpay.jpg"
+      }
+    }
+  },
+
+  {
+    id: 4,
+    time: "9am",
+    interview: {
+      student: "Ross Geller",
+      interviewer: {
+        id: 2,
+        name: "Chandler Bing",
+        avatar: "https://i.imgur.com/FK8V841.jpg" 
+      }
+    }
+  }
+];
+
 export default function Application(props) {
   const [day, setDay] = useState("Monday");
   return (
@@ -51,3 +97,4 @@ export default function Application(props) {
     </main>
   );
 }
+
