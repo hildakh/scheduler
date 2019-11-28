@@ -30,14 +30,15 @@ export default function Form(props) {
           />
         </form>
         <InterviewerList
-          interviewers={props.interviewers}
+          interviewers={[]}
           value={interviewer}
           onChange={setInterviewer}
         />
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
-          <Button danger onClick={reset}>
+          {/* Changed the props to onCancel as it was changed it in the index.js */}
+          <Button danger onClick={props.onCancel}>
             Cancel
           </Button>
           <Button confirm onClick={() => props.onSave(name, interviewer)}>
