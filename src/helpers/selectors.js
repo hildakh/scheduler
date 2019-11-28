@@ -24,3 +24,14 @@ export function getInterview(state, interview) {
   }
   return interviewInfo;
 }
+
+export function getInterview(state, interview) {
+  let interviewInfo = null;
+  if (interview) {
+    interviewInfo = {
+      ...interview,
+      interviewer: state.interviewers[interview.interviewer]
+    };
+  }
+  return interviewInfo;
+}
