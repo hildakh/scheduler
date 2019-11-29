@@ -26,6 +26,7 @@ export default function Application(props) {
       ...state.appointments,
       [id]: appointment
     };
+    //updating the state with the updated appointments objects
     setState({...state, appointments});
   }
 
