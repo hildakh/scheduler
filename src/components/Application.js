@@ -56,9 +56,9 @@ export default function Application(props) {
 
   useEffect(() => {
     Promise.all([
-      Promise.resolve(axios.get("/api/days")),
-      Promise.resolve(axios.get("/api/appointments")),
-      Promise.resolve(axios.get("/api/interviewers"))
+      (axios.get("/api/days")),
+      (axios.get("/api/appointments")),
+      (axios.get("/api/interviewers"))
     ]).then(all => {
       setState(prev => ({
         ...state,
@@ -73,7 +73,8 @@ export default function Application(props) {
 
   const schedule = appointments.map(appointment => {
     const interview = getInterview(state, appointment.interview);
-    // console.log(interview);
+
+    console.log(interview);
     return (
       <Appointment
         key={appointment.id}
