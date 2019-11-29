@@ -41,6 +41,8 @@ function save(name, interviewer) {
   <Show 
   student={props.interview.student}
   interviewer={props.interview.interviewer.name}
+  onEdit={}
+  onDelete={}
   />
   )}
   {mode === CREATE && 
