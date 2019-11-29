@@ -40,6 +40,7 @@ const schedule = appointments.map((appointment) => {
       id={appointment.id}
       time={appointment.time}
       interview={interview}
+      bookInterview={bookInterview}
     />
   );
 });
