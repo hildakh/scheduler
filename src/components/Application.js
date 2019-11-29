@@ -18,7 +18,6 @@ export default function Application(props) {
 
   function bookInterview(id, interview) {
 
-
   return axios.put(`/api/appointments/${id}`, {interview})
     .then( (response) => {
       if(response) {
@@ -34,7 +33,19 @@ export default function Application(props) {
     setState({...state, appointments})     
       }
     });
-  
+  }
+
+  function cancelInterview(id) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: null
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    }
+    setState({...state, appointments})
+    console.log(state.appointments);
   }
 
   useEffect(() => {
@@ -64,6 +75,7 @@ export default function Application(props) {
         time={appointment.time}
         interview={interview}
         bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
         interviewers={interviewers}
       />
     );
@@ -93,7 +105,7 @@ export default function Application(props) {
       </section>
       <section className="schedule">
         {schedule}
-        <Appointment bookInterview={bookInterview} key="last" time="5pm" />
+        <Appointment key="last" time="5pm" />
       </section>
     </main>
   );
