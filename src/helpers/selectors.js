@@ -25,13 +25,16 @@ export function getInterview(state, interview) {
   return interviewInfo;
 }
 
-export function getInterview(state, interview) {
-  let interviewInfo = null;
-  if (interview) {
-    interviewInfo = {
-      ...interview,
-      interviewer: state.interviewers[interview.interviewer]
-    };
+export function getInterviewersForDay(state, day) {
+  let result = [];
+  const filteredDay = state.days.filter(d => d.name === day);
+  if (filteredDay.length) {
+    const dayInterviewers = filteredDay[0].interviewers;
+    dayInterviewers.forEach(app => {
+      if (app === state.interviewers[app].id) {
+        result.push(state.interviewers[app]);
+      }
+    });
   }
-  return interviewInfo;
+  return result;
 }
