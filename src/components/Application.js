@@ -17,18 +17,24 @@ export default function Application(props) {
   const interviewers = getInterviewersForDay(state, state.day);
 
   function bookInterview(id, interview) {
-    // console.log(id, interview);
-    const appointment = {
-      ...state.appointments[id],
-      interview: { ...interview }
-    };
-    //updating the appointments object and adding the newly created appointment to the existing appointments object
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment
-    };
-    //updating the state with the updated appointments objects
-    setState({...state, appointments});
+
+
+  return axios.put(`/api/appointments/${id}`, {interview})
+    .then( (response) => {
+      if(response) {
+      const appointment = {
+        ...state.appointments[id],
+        interview: JSON.parse(response.config.data).interview
+      };
+      //updating the appointments object and adding the newly created appointment to the existing appointments object
+      const appointments = {
+        ...state.appointments,
+        [id]: appointment
+      };
+    setState({...state, appointments})     
+      }
+    });
+  
   }
 
   useEffect(() => {
