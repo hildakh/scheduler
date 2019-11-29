@@ -3,7 +3,7 @@ import axios from "axios";
 import "components/Application.scss";
 import DayList from "components/DayList";
 import Appointment from "components/Appointment";
-import { getAppointmentsForDay, getInterview } from "helpers/selectors";
+import { getAppointmentsForDay, getInterview, getInterviewersForDay} from "helpers/selectors";
 
 export default function Application(props) {
   const [state, setState] = useState({
@@ -14,6 +14,7 @@ export default function Application(props) {
   });
 
   const setDay = day => setState({ ...state, day });
+  const interviewers = getInterviewersForDay(state, state.day);
 
   function bookInterview(id, interview) {
     // console.log(id, interview);
@@ -57,6 +58,7 @@ export default function Application(props) {
         time={appointment.time}
         interview={interview}
         bookInterview={bookInterview}
+        interviewers={interviewers}
       />
     );
   });
@@ -72,7 +74,10 @@ export default function Application(props) {
         />
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
-          <DayList days={state.days} day={state.day} setDay={setDay} />
+          <DayList 
+          days={state.days} 
+          day={state.day} 
+          setDay={setDay} />
         </nav>
         <img
           className="sidebar__lhl sidebar--centered"
