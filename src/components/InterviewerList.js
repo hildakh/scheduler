@@ -1,12 +1,8 @@
-import React, {useState} from "react";
+import React from "react";
 import InterviewerListItem from "./InterviewerListItem";
 import "components/InterviewerList.scss";
 
 export default function InterviewerList(props) {
-  // const [id, setInterviewer] = useState(3);
-
-  //Or use objects destructuring and pass the props directly
-  // export default function InterviewerList({interviewers, value, onChange}) {
 
   const interviewersList = props.interviewers.map(interviewer => {
     return (

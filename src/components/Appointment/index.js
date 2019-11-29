@@ -13,6 +13,7 @@ function save(name, interviewer) {
     student: name, 
     interviewer
   };
+  props.bookInterview(props.id, interview);
 }
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
@@ -34,7 +35,7 @@ const { mode, transition, back } = useVisualMode(
   />
   )}
   {mode === CREATE && 
-  <Form onCancel={back} />
+  <Form onCancel={back} onSave={save} />
   }
   </article>
   );
