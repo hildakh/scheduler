@@ -7,6 +7,7 @@ import useVisualMode from "hooks/useVisualMode"
 import Form from "./Form";
 import Status from "./Status";
 import Confirm from "./Confirm";
+import Error from "./Error";
 
 export default function Appointment(props) {
 
@@ -35,14 +36,14 @@ function save(name, interviewer) {
   .then(() =>  {
      transition(SHOW)
      })
-  .catch(() => transition(ERROR_SAVE));
+  .catch(() => transition(ERROR_SAVE, true)) 
 }
 
 function remove(){
     transition(DELETING)
     props.cancelInterview(props.id)
     .then (() =>  transition(EMPTY)) 
-    .catch( () => transition(ERROR_DELETE))
+    .catch( () => transition(ERROR_DELETE, true))
   }
 
   return (
@@ -75,6 +76,15 @@ function remove(){
   <Form onCancel={back} onSave={save} name={props.interview.student} interviewers={props.interviewers} interviewer={props.interview.interviewer.id}
   />
   }
+  {mode === ERROR_DELETE &&
+  <Error message="Hahaha, you can't delete this interview!" onClose={ () => transition(SHOW)}
+  />
+  }
+  {mode === ERROR_SAVE &&
+  <Error message="Hmm... Can't save at the moment!" onClose={ () => transition(SHOW)}
+  />
+  }
+
   </article>
   );
 }
