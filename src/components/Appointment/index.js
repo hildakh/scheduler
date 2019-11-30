@@ -31,7 +31,7 @@ function save(name, interviewer) {
     interviewer
   };
 
-  transition(SAVING)
+  transition(SAVING, true)
   props.bookInterview(props.id, interview)
   .then(() =>  {
      transition(SHOW)
@@ -40,7 +40,7 @@ function save(name, interviewer) {
 }
 
 function remove(){
-    transition(DELETING)
+    transition(DELETING, true)
     props.cancelInterview(props.id)
     .then (() =>  transition(EMPTY)) 
     .catch( () => transition(ERROR_DELETE, true))
@@ -84,7 +84,6 @@ function remove(){
   <Error message="Hmm... Can't save at the moment!" onClose={ () => transition(SHOW)}
   />
   }
-
   </article>
   );
 }
