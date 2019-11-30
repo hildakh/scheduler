@@ -1,14 +1,27 @@
 import React, { useState } from "react";
 import InterviewerList from "components/InterviewerList";
 import Button from "components/Button";
+import { statements } from "@babel/template";
 
 export default function Form(props) {
   const [name, setName] = useState(props.name || "");
+  const [error, setError] = useState("");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const reset = () => {
-    setName("")
+    setName("");
+    setError("");
     setInterviewer(null);
   }
+
+  function validate() {
+    if (name === "") {
+      setError("Student name cannot be blank");
+      return;
+    }
+    setError("");
+    props.onSave(name, interviewer);
+  }
+
 
   return (
     <main className="appointment__card appointment__card--create">
@@ -20,7 +33,7 @@ export default function Form(props) {
             name="name"
             type="text"
             placeholder="Enter Student Name"
-            value={props.student}
+            value={name}
             onChange={(event) => setName(event.target.value)}
             /*
           This must be a controlled component
@@ -39,7 +52,7 @@ export default function Form(props) {
           <Button danger onClick={props.onCancel}>
             Cancel
           </Button>
-          <Button confirm onClick={() => props.onSave(name, interviewer)}>
+          <Button confirm onClick={validate}>
             Save
           </Button>
         </section>

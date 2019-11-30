@@ -68,7 +68,7 @@ function remove(){
   <Confirm onConfirm={remove} onCancel={ () => transition(SHOW)}/>
   }
   {mode === EDIT &&
-  <Form onCancel={back} onSave={save} student={props.interview.student} interviewers={props.interviewers} interviewer={props.interview.interviewer.id}
+  <Form onCancel={back} onSave={save} name={props.interview.student} interviewers={props.interviewers} interviewer={props.interview.interviewer.id}
   />
   }
   </article>
