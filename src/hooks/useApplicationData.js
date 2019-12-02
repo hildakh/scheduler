@@ -16,6 +16,7 @@ function getSpotsRemainingForDay(day, appointments) {
   });
   return freeSpots;
 }
+
 function decorateDaysWithSpots(days, appointments) {
   // return array of decorated days
   const decoratedDays = days.map(day => ({
@@ -45,10 +46,12 @@ function reducer(state, action) {
       ...state.appointments[action.id],
       interview: action.interview
     };
+
     const appointments = {
       ...state.appointments,
       [action.id]: appointment
     };
+
     const days = decorateDaysWithSpots(state.days, appointments);
     return {
       ...state,
@@ -90,6 +93,7 @@ export default function useApplicationData() {
       }
     });
   }
+  
   useEffect(() => {
     Promise.all([
       axios.get("/api/days"),
