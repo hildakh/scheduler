@@ -1,6 +1,6 @@
 import { useReducer, useEffect } from "react";
 import axios from "axios";
-import { actions } from "@storybook/addon-actions/dist/preview";
+// import { actions } from "@storybook/addon-actions/dist/preview";
 
 const SET_DAY = "SET_DAY";
 const SET_APPLICATION_DATA = "SET_APPLICATION_DATA";
