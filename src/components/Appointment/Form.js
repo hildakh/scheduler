@@ -18,7 +18,7 @@ export default function Form(props) {
       setError("Student name cannot be blank");
       return;
     }
-    setError("");
+    // setError("");
     props.onSave(name, interviewer);
   }
 
@@ -40,6 +40,7 @@ export default function Form(props) {
           This must be a controlled component
         */
           />
+          <section className="appointment__validation">{error}</section>
         </form>
         <InterviewerList
           interviewers={props.interviewers}
