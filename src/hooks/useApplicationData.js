@@ -103,9 +103,6 @@ export default function useApplicationData() {
       const days = all[0].data;
       const appointments = all[1].data;
       const interviewers = all[2].data;
-      console.log(days);
-      console.log(appointments);
-      console.log(interviewers);
       dispatch({
         type: SET_APPLICATION_DATA,
         days,
