@@ -126,8 +126,23 @@ describe("Application", () => {
     fireEvent.click(getByText(appointment, "Save"));
     await waitForElement( () => getByText(appointment, "Hmm... Can't save at the moment!"))
 
-    debug();
-
+    // debug();
     });
+
+  //Test no. 6
+  it("shows the delete error when failing to delete an existing appointment", async() => {
+    axios.delete.mockRejectedValueOnce();
+    const { container, debug} = render(<Application />);
+    await waitForElement(() => getByText(container, "Archie Cohen"));
+
+    const appointment = getAllByTestId(container, "appointments").find(
+    appointment => queryByText(appointment, "Archie Cohen"));
+
+    fireEvent.click(getByAltText(appointment, "Delete"));
+    expect(getByText(appointment, "How dare you?!")).toBeInTheDocument();
+    fireEvent.click(getByText(appointment, "Confirm"));
+    await waitForElement( () => getByText(appointment, "Hahaha, you can't delete this interview!"));
+    // debug();
+  });
 });
 
