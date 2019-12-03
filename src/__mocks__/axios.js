@@ -81,6 +81,16 @@ export default {
         data: fixtures.interviewers
       });
     }
+  }),
+
+  put: jest.fn( url => {
+    // if ( url ==="/api/appointments") {
+    return Promise.resolve({
+      status: 200,
+      statusText: "OK",
+      data: fixtures.appointments
+     })
+    // }
   })
 };
 
