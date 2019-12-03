@@ -86,7 +86,7 @@ export default function useApplicationData() {
       });
   };
 
-  function cancelInterview(id) {
+ function cancelInterview(id) {
     return axios.delete(`/api/appointments/${id}`).then(response => {
       if (response) {
         dispatch({ type: SET_INTERVIEW, id, interview: null});
