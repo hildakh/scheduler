@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 export default function InterviewerList(props) {
   InterviewerList.propTypes = {
-    value: PropTypes.string,
+    value: PropTypes.number,
     onChange: PropTypes.func.isRequired
   }
   const interviewersList = props.interviewers.map(interviewer => {
