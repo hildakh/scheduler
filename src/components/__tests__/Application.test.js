@@ -61,10 +61,9 @@ describe("Application", () => {
     // 2. Wait until the text "Archie Cohen" is displayed.
     await waitForElement(() => getByText(container, "Archie Cohen"));
   
-    // 3. Click the "Delete" button on the booked appointment.
     const appointment = getAllByTestId(container, "appointments").find(
-    appointment => queryByText(appointment, "Archie Cohen")
-  );
+    appointment => queryByText(appointment, "Archie Cohen"));
+
     // 3. Click the "Delete" button on the booked appointment.
     fireEvent.click(getByAltText(appointment, "Delete"));
     // 4. Check that the confirmation message is shown.
@@ -81,9 +80,29 @@ describe("Application", () => {
   });
 
   it("loads data, edits an interview and keeps the spots remaining for Monday the same", async () => {
-    
 
+    const { container, debug } = render(<Application />);
+    await waitForElement(()=> getByText(container, "Archie Cohen"));
 
-  }).
+    const appointment = getAllByTestId(container, "appointments").find(
+    appointment => queryByText(appointment, "Archie Cohen")); 
 
+    fireEvent.click(getByAltText(appointment, "Edit"));
+
+    fireEvent.change(getByPlaceholderText(appointment, /enter student name/i), {
+      target: { value: "Hilda Matilda"}
+    });
+    fireEvent.click(getByText(appointment, "Save"));
+
+    expect(getByText(appointment, "Saving")).toBeInTheDocument();
+    await waitForElement(()=> getByText(appointment, "Hilda Matilda"));
+
+    const day = getAllByTestId(container, "day").find(day => queryByText(day, "Monday")
+    );
+    expect(getByText(day, "1 spot remaining")).toBeInTheDocument();
+    debug()
+
+    });
+  
 });
+
