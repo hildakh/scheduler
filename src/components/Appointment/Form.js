@@ -13,6 +13,10 @@ export default function Form(props) {
     setInterviewer(null);
   }
 
+  const cancel = () => {
+    reset()
+    props.onCancel();
+  }
   function validate() {
     if (name === "") {
       setError("Student name cannot be blank");
@@ -35,6 +39,7 @@ export default function Form(props) {
             value={name}
             onChange={(event) => setName(event.target.value)}
             data-testid="student-name-input"
+            onCancel={props.onCancel}
             /*
           This must be a controlled component
         */
@@ -50,7 +55,7 @@ export default function Form(props) {
       <section className="appointment__card-right">
         <section className="appointment__actions">
           {/* Changed the props to onCancel as it was changed it in the index.js */}
-          <Button danger onClick={props.onCancel}>
+          <Button danger onClick={cancel}>
             Cancel
           </Button>
           <Button confirm onClick={validate}>
