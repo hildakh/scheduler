@@ -21,4 +21,5 @@ describe('Appointment component tests', () => {
   it("renders without crashing", () => {
     render(<Application />);
   });
+
 })
