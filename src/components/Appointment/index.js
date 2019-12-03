@@ -49,7 +49,7 @@ function remove(){
   return (
   <article 
   className="appointment"
-  data-testid="appointment"
+  data-testid="appointments"
   >
   <Header time={props.time}/>
 
