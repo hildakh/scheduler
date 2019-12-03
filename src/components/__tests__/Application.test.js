@@ -28,6 +28,9 @@ describe("Application", () => {
     const appointments = getAllByTestId(container, "appointments")
 
     console.log(prettyDOM(appointments));
+
+    const appointment = appointments[0];
+    console.log(prettyDOM(appointment));
   });
 
 });
