@@ -41,6 +41,8 @@ describe("Application", () => {
 
     // console.log(prettyDOM(appointment));
     // debug method This method is a shortcut for console.log(prettyDOM(baseElement)).
+    
+    await waitForElement(()=> getByText(appointment, "Lydia Miller-Jones"));
     debug();
 
   });
