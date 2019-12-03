@@ -37,10 +37,12 @@ describe("Application", () => {
     fireEvent.click(getByAltText(appointment, "Sylvia Palmer"));
 
     fireEvent.click(getByText(appointment, "Save"));
+    expect(getByText(appointment, "Saving")).toBeInTheDocument();
 
-    console.log(prettyDOM(appointment));
-        expect(getByText(appointment, "Saving")).toBeInTheDocument();
+    // console.log(prettyDOM(appointment));
+    // debug method This method is a shortcut for console.log(prettyDOM(baseElement)).
     debug();
+
   });
 
 });
