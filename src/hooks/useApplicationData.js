@@ -22,7 +22,6 @@ export default function useApplicationData() {
       .put(`/api/appointments/${id}`, { interview })
       .then(response => {
         if (response) {
-          //updating the appointments object and adding the newly created appointment to the existing appointments object
           dispatch({ type: SET_INTERVIEW, id, interview });
         }
       });

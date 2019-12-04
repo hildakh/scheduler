@@ -3,11 +3,9 @@ import "components/DayListItem.scss";
 const classnames = require('classnames');
 
 export default function DayListItem(props) {
-  // const [spot, setSpots] = useState(5);
+  
   const formatSpots = (numberOfSpots) => {
-    //
-    // const decreaseSpots = () => {
-    //   setSpots(spot -1);
+
     if (numberOfSpots === 0) {
       return `no spots remaining`;
     }

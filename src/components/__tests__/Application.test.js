@@ -3,8 +3,6 @@ import { render, cleanup, waitForElement, prettyDOM, getByText, getAllByTestId, 
 import Application from "components/Application";
 import { fireEvent } from "@testing-library/react/dist";
 import axios from "axios";
-import { arrayOf } from "prop-types";
-// import { exportAllDeclaration } from "@babel/types";
 
 afterEach(cleanup);
 
@@ -40,15 +38,14 @@ describe("Application", () => {
     fireEvent.click(getByText(appointment, "Save"));
 
     expect(getByText(appointment, "Saving")).toBeInTheDocument();
-
-    // console.log(prettyDOM(appointment));
-    // debug method > This method is a shortcut for console.log(prettyDOM(baseElement)).
-    
+  
     await waitForElement(()=> getByText(appointment, "Lydia Miller-Jones"));
 
     const day = getAllByTestId(container, "day").find(day => queryByText(day, "Monday")
     );
     expect(getByText(day, "no spots remaining")).toBeInTheDocument();
+    // console.log(prettyDOM(appointment));
+    // debug method > This method is a shortcut for console.log(prettyDOM(baseElement)).
     // debug();
   });
 
@@ -146,5 +143,6 @@ describe("Application", () => {
     expect(getByText(appointment, "Hahaha, you can't delete this interview!")).toBeInTheDocument();
     // debug();
   });
+  
 });
 

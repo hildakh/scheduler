@@ -47,47 +47,58 @@ function remove(){
   }
 
   return (
-  <article 
-  className="appointment"
-  data-testid="appointments"
-  >
-  <Header time={props.time}/>
+    <article 
+    className="appointment"
+    data-testid="appointments"
+    >
+    <Header time={props.time}/>
 
 
-  {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
-  {mode === SHOW && ( 
-  <Show 
-  student={props.interview.student}
-  interviewer={props.interview.interviewer.name}
-  onEdit={() => transition(EDIT)}
-  onDelete={() => transition(CONFIRM)}
-  />
-  )}
-  {mode === CREATE && 
-  <Form onCancel={back} onSave={save} interviewers={props.interviewers}/>
-  }
-  {mode === SAVING && 
-  <Status message="Saving"/>
-  }
-  {mode === DELETING &&
-  <Status message="Deleting"/>
-  }
-  {mode === CONFIRM &&
-  <Confirm onConfirm={remove} onCancel={ () => transition(SHOW)}/>
-  }
-  {mode === EDIT &&
-  <Form onCancel={back} onSave={save} name={props.interview.student} interviewers={props.interviewers} interviewer={props.interview.interviewer.id}
-  />
-  }
-  {mode === ERROR_DELETE &&
-  <Error message="Hahaha, you can't delete this interview!" onClose={ () => transition(SHOW)}
-  />
-  }
-  {mode === ERROR_SAVE &&
-  <Error message="Hmm... Can't save at the moment!" onClose={ () => transition(SHOW)}
-  />
-  }
-  </article>
-  );
+      {mode === EMPTY && 
+    <Empty onAdd={() => transition(CREATE)}/>}
+      
+      {mode === SHOW && ( 
+
+    <Show 
+    student={props.interview.student}
+    interviewer={props.interview.interviewer.name}
+    onEdit={() => transition(EDIT)}
+    onDelete={() => transition(CONFIRM)}
+    />
+    )}
+    {mode === CREATE && 
+    <Form onCancel={back} onSave={save} interviewers={props.interviewers}
+    />
+
+    }
+    {mode === SAVING && 
+    <Status message="Saving"/>
+
+    }
+    {mode === DELETING &&
+    <Status message="Deleting"/>
+
+    }
+    {mode === CONFIRM &&
+    <Confirm onConfirm={remove} onCancel={ () => transition(SHOW)}/>
+    }
+    {mode === EDIT &&
+    <Form onCancel={back} onSave={save} name={props.interview.student} interviewers={props.interviewers} interviewer={props.interview.interviewer.id}
+    />
+
+    }
+    {mode === ERROR_DELETE &&
+    <Error message="Hahaha, you can't delete this interview!" onClose={ () => transition(SHOW)}
+    />
+
+    }
+    {mode === ERROR_SAVE &&
+    
+    <Error message="Hmm... Can't save at the moment!" onClose={ () => transition(SHOW)}
+    />
+
+    }
+    </article>
+    );
 }
 

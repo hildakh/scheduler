@@ -48,6 +48,6 @@ describe("Appointments", () => {
 
       cy.contains(".appointment__card--show", "Golem")
       .should("not.exist");
-
   });
+  
 });
