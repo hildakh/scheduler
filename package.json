@@ -49,7 +49,12 @@
   "jest": {
     "watchPathIgnorePatterns": [
       "<rootDir>/node_modules/"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/index.js"
     ]
   },
+  
   "proxy": "http://localhost:8001"
 }
