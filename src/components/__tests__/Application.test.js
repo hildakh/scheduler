@@ -20,7 +20,6 @@ describe("Application", () => {
     expect(getByText("Leopold Silvers")).toBeInTheDocument();
   });
 })
-
   //Test no. 2
   it("loads data, books an interview and reduces the spots remaining for the first day by 1", async() => {
     const { container, debug } = render(<Application />);
@@ -143,7 +142,7 @@ describe("Application", () => {
     fireEvent.click(getByText(appointment, "Confirm"));
 
     await waitForElement( () => getByText(appointment, "Hahaha, you can't delete this interview!"));
-    
+
     expect(getByText(appointment, "Hahaha, you can't delete this interview!")).toBeInTheDocument();
     // debug();
   });
