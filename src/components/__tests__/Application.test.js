@@ -141,7 +141,9 @@ describe("Application", () => {
     fireEvent.click(getByAltText(appointment, "Delete"));
     expect(getByText(appointment, "How dare you?!")).toBeInTheDocument();
     fireEvent.click(getByText(appointment, "Confirm"));
+
     await waitForElement( () => getByText(appointment, "Hahaha, you can't delete this interview!"));
+    
     expect(getByText(appointment, "Hahaha, you can't delete this interview!")).toBeInTheDocument();
     // debug();
   });
