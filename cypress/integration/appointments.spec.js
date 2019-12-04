@@ -34,4 +34,20 @@ describe("Appointments", () => {
     cy.contains(".appointment__card--show", "Golem");
     cy.contains(".appointment__card--show", "Tori Malcolm");
   });
+
+  it("should cancel an interview", () => {    
+    cy.get("[alt=Delete]")
+      .first()
+      .click({ force: true});
+
+      cy.contains("Confirm")
+      .click({ force: true});
+
+      cy.contains("Deleting").should("exist");
+      cy.contains("Deleting").should("not.exist");
+
+      cy.contains(".appointment__card--show", "Golem")
+      .should("not.exist");
+
+  });
 });
