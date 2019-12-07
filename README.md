@@ -9,7 +9,9 @@ A react application which allows users to book and cancel interviews
   Storybook, Webpack Dev Server, Jest, Testing Library
   
 ## Screenshots
+![](https://github.com/hildakh/scheduler/blob/master/docs/main.png?raw=true)
 ![](https://github.com/hildakh/scheduler/blob/master/docs/bookinterview.png?raw=true)
+![](https://github.com/hildakh/scheduler/blob/master/docs/delete.png?raw=true)
 
 ## Setup
 
