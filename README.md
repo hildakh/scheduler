@@ -7,6 +7,8 @@ A react application which allows users to book and cancel interviews
   Axios, WebSockets
   Axios
   Storybook, Webpack Dev Server, Jest, Testing Library
+  
+## Screenshots
 
 ## Setup
 
