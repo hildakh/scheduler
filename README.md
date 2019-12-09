@@ -1,5 +1,5 @@
 # Interview Scheduler
-A react application which allows users to book and cancel interviews 
+A React application which allows users to book and cancel interviews 
 
 # Technical Specifications
   React
