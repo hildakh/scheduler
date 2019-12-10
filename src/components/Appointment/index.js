@@ -61,7 +61,7 @@ function remove(){
 
     <Show 
     student={props.interview.student}
-    interviewer={props.interview.interviewer.name}
+    interviewer={props.interview.interviewer}
     onEdit={() => transition(EDIT)}
     onDelete={() => transition(CONFIRM)}
     />
