@@ -1,5 +1,5 @@
 import React from "react";
-import { render, cleanup, waitForElement, prettyDOM, getByText, getAllByTestId, getByAltText, getByPlaceholderText, queryByText } from "@testing-library/react";
+import { render, cleanup, waitForElement, getByText, getAllByTestId, getByAltText, getByPlaceholderText, queryByText } from "@testing-library/react";
 import Application from "components/Application";
 import { fireEvent } from "@testing-library/react/dist";
 import axios from "axios";
@@ -79,7 +79,7 @@ describe("Application", () => {
   //Test no. 4
   it("loads data, edits an interview and keeps the spots remaining for Monday the same", async () => {
 
-    const { container, debug } = render(<Application />);
+    const { container } = render(<Application />);
     await waitForElement(()=> getByText(container, "Archie Cohen"));
 
     const appointment = getAllByTestId(container, "appointments").find(
@@ -98,8 +98,6 @@ describe("Application", () => {
     const day = getAllByTestId(container, "day").find(day => queryByText(day, "Monday")
     );
     expect(getByText(day, "1 spot remaining")).toBeInTheDocument();
-    // debug()
-
     });
   
   //Test no. 5
@@ -122,7 +120,6 @@ describe("Application", () => {
     fireEvent.click(getByText(appointment, "Save"));
     await waitForElement( () => getByText(appointment, "Hmm... Can't save at the moment!"))
     expect(getByText(appointment, "Hmm... Can't save at the moment!")).toBeInTheDocument();
-    // debug();
     });
 
   //Test no. 6
