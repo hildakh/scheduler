@@ -1,5 +1,5 @@
 import React from "react";
-import { render, cleanup, getByAltText } from "@testing-library/react";
+import { render, cleanup, getByAltText, debug } from "@testing-library/react";
 import Form from "components/Appointment/Form";
 import { fireEvent } from "@testing-library/react/dist";
 
@@ -66,7 +66,7 @@ describe("Form", () => {
 
   it("can successfully save after trying to submit an empty student name", () => {
     const onSave = jest.fn();
-    const { getByText, getByPlaceholderText, queryByText } = render(
+    const { getByText, getByPlaceholderText, getByAltText } = render(
       <Form interviewers={interviewers} onSave={onSave} />
     );
   
@@ -78,12 +78,13 @@ describe("Form", () => {
     fireEvent.change(getByPlaceholderText("Enter Student Name"), {
       target: { value: "Hilda" }
     });
+    // debugger()
     fireEvent.click(getByAltText("Sylvia Palmer"));
   
     fireEvent.click(getByText("Save"));
     
     expect(onSave).toHaveBeenCalledTimes(1);
-    expect(onSave).toHaveBeenCalledWith("Hilda", 2);
+    expect(onSave).toHaveBeenCalledWith("Hilda", 1);
     
   });
 
