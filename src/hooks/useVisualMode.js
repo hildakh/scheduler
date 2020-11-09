@@ -19,10 +19,10 @@ const useVisualMode = (initial) => {
   };
 
   function back() {
+    setMode(history[history.length - 2]);
     if (history.length > 1) {
       setHistory((history) => [...history.slice(0, history.length - 1)]);
     }
-    setMode(history[history.length - 1]);
   }
   return { mode, transition, back };
 };
