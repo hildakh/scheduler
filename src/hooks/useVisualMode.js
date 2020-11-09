@@ -10,18 +10,19 @@ const useVisualMode = (initial) => {
     //If there is need for replace
     if (replace) {
       //remove the last item in the array to replace it with the new mode
-      setHistory((prev) => [...prev.slice(0, prev.length - 1), mode]);
+      setHistory((history) => [...history.slice(0, history.length - 1), mode]);
     } else {
       //add the current mode to the history array
       //set the history
-      setHistory((prev) => [...prev, mode]);
+      setHistory((history) => [...history, mode]);
     }
   };
 
   function back() {
     if (history.length > 1) {
-      setHistory((prev) => [...prev.slice(0, prev.length - 1)]);
+      setHistory((history) => [...history.slice(0, history.length - 1)]);
     }
+    setMode(history[history.length - 1]);
   }
   return { mode, transition, back };
 };
